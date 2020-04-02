@@ -1,5 +1,5 @@
 {
-  "name": "flux-core",
+  "name": "@flux/collections",
   "version": "0.0.1",
   "description": "Flux Player Core Components - Collections",
   "main": "dist/index.js",
