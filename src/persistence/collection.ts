@@ -2,7 +2,7 @@ import {
   bufferToString,
   stripIllegalCharacters,
   randomString
-} from "@flux/utils ";
+} from "@flux/utils";
 import { join } from "path";
 import { env } from "@flux/utils";
 import Structure from "./structure";
@@ -147,12 +147,15 @@ export default abstract class Collection<T> {
    * @param row The row being inserted
    * @param issues Colection of issues
    */
-  private validate(row: BaseModel): string[] {
+  private validate(row: T): string[] {
     // Instatiate issues collection
     let issues: string[] = [];
 
+    // TODO: Research on how to specify base class for generic type argument
+    let temp = (row as unknown) as BaseModel;
+
     // Iterate over row's keys and validate each of them
-    Object.keys(row).forEach(key => {
+    Object.keys(temp).forEach(key => {
       let column = this.structure.columns.find(column => column.key === key);
 
       // Validating whether the collection structure has the specified key
@@ -163,12 +166,12 @@ export default abstract class Collection<T> {
       }
 
       // If the key is required to have a value, validating whether is actually has a value
-      if (column.required && !row.get(key)) {
+      if (column.required && !temp.get(key)) {
         return issues.push(`The column '${key}' is required to have a value.`);
       }
 
       // If the key is required to have a specific type. Validating that the value is of that type
-      let type = typeof row.get(key);
+      let type = typeof temp.get(key);
       if (column.type !== type && type !== "undefined") {
         return issues.push(
           `The column '${key}' should have data of the type '${type}'`
@@ -176,7 +179,7 @@ export default abstract class Collection<T> {
       }
     });
 
-    return this.validateMissing(row, issues);
+    return this.validateMissing(temp, issues);
   }
 
   /**
