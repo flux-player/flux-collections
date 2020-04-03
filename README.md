@@ -1,11 +1,11 @@
-# Flux Project - Core Components
-This project contains all the logic for Flux. Anything that's detached not UI 
+# Flux Project Core Components - Collections
+Collections library for Flux. Is it the best out there? Nope. Does it work for what we need... for now? Deffo!
 
 
 ## Building Project
 
 ```javascript
-yarn run build
+yarn build
 ```
 
 ## Configuration
