@@ -13,7 +13,9 @@
     "exclude": [
       "node_modules",
       "dist",
-      "types"
+      "types",
+      "tests"
+
     ],
     "include": [
         "src/**/*"
