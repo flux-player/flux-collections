@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "date-fns": "^2.11.0",
-    "searchjs": "^1.0.2"
+    "searchjs": "^1.0.2",
+    "@flux/utils": "^0.0.1"
   }
 }
