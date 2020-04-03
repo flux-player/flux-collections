@@ -1,4 +1,4 @@
-export default abstract class Model {
+export default abstract class BaseModel {
 
     /**
      * Get the value of the specified key in the model

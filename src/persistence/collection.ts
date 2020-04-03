@@ -1,12 +1,16 @@
+import {
+  bufferToString,
+  stripIllegalCharacters,
+  randomString
+} from "@flux/utils ";
 import { join } from "path";
+import { env } from "@flux/utils";
 import Structure from "./structure";
 import { matchArray } from "searchjs";
-import { env } from "../config/configuration";
-import { getAppDataDirectory } from "../files/directory";
+import BaseModel from "../models/model";
+import { getAppDataDirectory } from "@flux/utils";
 import { getCollectionAsJSON } from "../utilities/collections";
-import { ensureFilePathExists, readFile, writeFile } from "../extensions/file";
-import { bufferToString, stripIllegalCharacters, randomString } from "../utilities/text";
-import Model from "../models/model";
+import { ensureFilePathExists, readFile, writeFile } from "@flux/utils";
 
 export default abstract class Collection<T> {
   /**
@@ -132,18 +136,18 @@ export default abstract class Collection<T> {
     this.data.push(Object.assign(this.getBlankSchemaObject(), row));
 
     // Persist the collection
-    if(this._autoPersist) {
-        this.persist();
+    if (this._autoPersist) {
+      this.persist();
     }
   }
 
   /**
    * Validates the row being inserted against the rules
-   * 
+   *
    * @param row The row being inserted
    * @param issues Colection of issues
    */
-  private validate(row: Model): string[] {
+  private validate(row: BaseModel): string[] {
     // Instatiate issues collection
     let issues: string[] = [];
 
@@ -177,11 +181,11 @@ export default abstract class Collection<T> {
 
   /**
    * Validates any missing required columns in the input row
-   * 
+   *
    * @param row The row being inserted
    * @param issues Colection of issues
    */
-  private validateMissing(row: Model, issues: string[]): string[] {
+  private validateMissing(row: BaseModel, issues: string[]): string[] {
     this.structure.columns
       .filter(column => {
         if (!column.required) return;
@@ -198,7 +202,7 @@ export default abstract class Collection<T> {
 
   /**
    * Run a query against the collection
-   * 
+   *
    * @param query
    */
   query(query: Object) {
@@ -223,7 +227,6 @@ export default abstract class Collection<T> {
 
       // Parse JSON string to an object
       let object = JSON.parse(bufferToString(data));
-      
 
       this._isLoaded = true;
     } catch (error) {
@@ -253,7 +256,7 @@ export default abstract class Collection<T> {
       id: randomString(8)
     };
 
-    this.structure.columns.forEach((column) => {
+    this.structure.columns.forEach(column => {
       output[column.key] = null;
     });
 
