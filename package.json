@@ -6,10 +6,10 @@
   "repository": "https://github.com/flux-player/flux-collections.git",
   "author": "Melvin Mupondori",
   "license": "MIT",
-  "types": "dist/types.d.ts",
-  "prepublish": "tsc",
+  "types": "dist/index.d.ts",
+  "prepublish": "build",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc --build tsconfig.json",
     "test": "jest --forceExit --coverage --verbose",
     "lint": "tsc --noEmit && eslint \"**/*.{js,ts}\" --quiet --fix",
     "watch-test": "npm run test -- --watchAll"
@@ -17,7 +17,6 @@
   "devDependencies": {
     "@types/jest": "^25.1.4",
     "@types/node": "^13.9.2",
-    "@types/text-encoding": "^0.0.35",
     "jest": "^24.9.0",
     "ts-jest": "^24.1.0"
   },
