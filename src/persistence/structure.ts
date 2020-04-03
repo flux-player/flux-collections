@@ -1,4 +1,4 @@
-import {Column} from "./column";
+import Column from "./column";
 
 /**
  * Defines the structure of a collection
