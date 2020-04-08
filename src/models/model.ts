@@ -1,5 +1,5 @@
 export default abstract class BaseModel {
-
+    id: string = "";
     /**
      * Get the value of the specified key in the model
      * 
