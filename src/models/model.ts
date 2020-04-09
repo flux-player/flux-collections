@@ -1,5 +1,5 @@
 export default abstract class BaseModel {
-    id: string = "";
+    public id: string = "";
     /**
      * Get the value of the specified key in the model
      * 
@@ -8,6 +8,6 @@ export default abstract class BaseModel {
     public get(key: string | number) : string | number | Object | undefined {
         if(!this.hasOwnProperty(key)) return;
 
-        return // ??
+        return // TODO: Implement method
     }
 }
