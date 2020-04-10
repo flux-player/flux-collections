@@ -1,5 +1,8 @@
+import { ColumnUniqueKey } from "../persistence/column";
+
 export default abstract class BaseModel {
-    public id: string = "";
+    public id: ColumnUniqueKey = "";
+
     /**
      * Get the value of the specified key in the model
      * 

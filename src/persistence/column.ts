@@ -1,4 +1,10 @@
 /**
+ * Type wrapper for a column
+ */
+export interface ColumnUniqueKey extends String {}
+
+
+/**
  * Represents a single column in a collection's structure
  */
 export default class Column {
