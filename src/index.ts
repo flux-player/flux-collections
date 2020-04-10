@@ -1,7 +1,9 @@
 // Export base model class
 export { default as BaseModel } from "./models/model";
 
-//Export column class
+//Export column members
+export { ColumnUniqueKey } from "./persistence/column";
+
 export { default as Column } from "./persistence/column";
 
 // Export collection utilities
