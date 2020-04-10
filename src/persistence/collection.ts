@@ -255,9 +255,7 @@ export default abstract class Collection<T> {
    * Get a blank object representing the schema of the collection
    */
   private getBlankSchemaObject() {
-    let output: any = {
-      id: randomString(8)
-    };
+    let output: any = {};
 
     this.structure.columns.forEach(column => {
       output[column.key] = null;
