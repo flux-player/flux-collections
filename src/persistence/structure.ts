@@ -11,7 +11,9 @@ export default class Structure {
     /**
      * The columns making up the collection structure
      */
-    private _columns: Column[] = [];
+    private _columns: Column[] = [
+        new Column('id', 'string', true)
+    ];
 
     get columns(): Column[] {
         return this._columns;
