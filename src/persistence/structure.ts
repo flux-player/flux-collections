@@ -5,7 +5,10 @@ import Column from "./column";
  */
 export default class Structure {
     constructor(columns: Column[]) {
-        this._columns = columns;
+        if(!columns) return;
+
+        // Add the columns to the existing collection
+        columns.forEach(item => this._columns.push(item))
     }
 
     /**
