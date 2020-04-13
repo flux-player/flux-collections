@@ -13,9 +13,12 @@ export default abstract class BaseModel {
      * 
      * @param key 
      */
-    public get(key: string | number) : string | number | Object | undefined {
+    public get(key: string | number) : string | number | Object | Array<any> | undefined {
         if(!this.hasOwnProperty(key)) return;
 
-        return // TODO: Implement method
+        // TODO: Find a better way to do this
+        let temp = this as any;
+
+        return temp[key];
     }
 }
