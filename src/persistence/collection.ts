@@ -1,7 +1,7 @@
 import {
   bufferToString,
   stripIllegalCharacters,
-  randomString
+  randomString,
 } from "@flux/utils";
 import { join } from "path";
 import { env } from "@flux/utils";
@@ -117,7 +117,7 @@ export default abstract class Collection<T> {
 
     if (Array.isArray(row)) {
       // Recursively push each and every one of the rows
-      row.forEach(single => {
+      row.forEach((single) => {
         this.push(single);
       });
 
@@ -155,8 +155,8 @@ export default abstract class Collection<T> {
     let temp = (row as unknown) as BaseModel;
 
     // Iterate over row's keys and validate each of them
-    Object.keys(temp).forEach(key => {
-      let column = this.structure.columns.find(column => column.key === key);
+    Object.keys(temp).forEach((key) => {
+      let column = this.structure.columns.find((column) => column.key === key);
 
       // Validating whether the collection structure has the specified key
       if (!column) {
@@ -189,16 +189,18 @@ export default abstract class Collection<T> {
    * @param issues Colection of issues
    */
   private validateMissing(row: BaseModel, issues: string[]): string[] {
-    this.structure.columns
-      .filter(column => {
-        if (!column.required) return;
-        return row.get(column.key);
-      })
-      .forEach(column => {
-        issues.push(
-          `The column '${column.key}' is required but was not given a value`
-        );
-      });
+    // Filter out the columns that are on the column but aren't defined
+    let filtered = this.structure.columns.filter((column) => {
+      if (!column.required) return;
+      return !row.get(column.key);
+    });
+
+    // Iterate over the items that were found and push them to the issues array
+    filtered.forEach((column) => {
+      issues.push(
+        `The column '${column.key}' is required but was not given a value`
+      );
+    });
 
     return issues;
   }
@@ -257,7 +259,7 @@ export default abstract class Collection<T> {
   private getBlankSchemaObject() {
     let output: any = {};
 
-    this.structure.columns.forEach(column => {
+    this.structure.columns.forEach((column) => {
       output[column.key] = null;
     });
 
