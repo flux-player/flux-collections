@@ -133,7 +133,7 @@ export default abstract class Collection<T> {
     }
 
     // Push the data row to the internal collection
-    this.data.push(Object.assign(this.getBlankSchemaObject(), row));
+    this.data.push(row);
 
     // Persist the collection
     if (this._autoPersist) {
