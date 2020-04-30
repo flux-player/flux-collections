@@ -1,5 +1,5 @@
 {
-  "name": "@flux/collections",
+  "name": "@flux-player/collections",
   "version": "0.0.1",
   "description": "Flux Player Core Components - Collections",
   "main": "dist/index.js",
@@ -23,6 +23,6 @@
   "dependencies": {
     "date-fns": "^2.11.0",
     "searchjs": "^1.0.2",
-    "@flux/utils": "file:../flux-utils"
+    "@flux-player/utils": "^0.0.1"
   }
 }

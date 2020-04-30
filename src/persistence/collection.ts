@@ -2,15 +2,15 @@ import {
   bufferToString,
   stripIllegalCharacters,
   randomString,
-} from "@flux/utils";
+} from "@flux-player/utils";
 import { join } from "path";
-import { env } from "@flux/utils";
+import { env } from "@flux-player/utils";
 import Structure from "./structure";
 import { matchArray } from "searchjs";
 import BaseModel from "../models/model";
-import { getAppDataDirectory } from "@flux/utils";
+import { getAppDataDirectory } from "@flux-player/utils";
 import { getCollectionAsJSON } from "../utilities/collections";
-import { ensureFilePathExists, readFile, writeFile } from "@flux/utils";
+import { ensureFilePathExists, readFile, writeFile } from "@flux-player/utils";
 
 export default abstract class Collection<T> {
   /**

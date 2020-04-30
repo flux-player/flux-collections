@@ -1,5 +1,5 @@
 import { ColumnUniqueKey } from "../persistence/column";
-import { randomString } from "@flux/utils";
+import { randomString } from "@flux-player/utils";
 
 export default abstract class BaseModel {
     public id: ColumnUniqueKey = "";
