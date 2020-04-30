@@ -20,6 +20,7 @@
     "jest": "^24.9.0",
     "ts-jest": "^24.1.0"
   },
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "dependencies": {
     "date-fns": "^2.11.0",
     "searchjs": "^1.0.2",
