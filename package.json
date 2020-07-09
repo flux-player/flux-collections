@@ -1,6 +1,6 @@
 {
   "name": "@flux-player/collections",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Flux Player Core Components - Collections",
   "main": "dist/index.js",
   "repository": "https://github.com/flux-player/flux-collections.git",
